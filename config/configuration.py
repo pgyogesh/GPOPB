@@ -1,0 +1,2 @@
+MAX_THREADS = 8
+DATABASE = 'gpadmin'
