@@ -20,3 +20,7 @@ Options:
   -h, --help      show this help message and exit
   --ad-hoc=ADHOC  Specify filename for list of objects
 ```
+
+### Blog post
+
+http://pgyogesh.com/blog/greenplum/python/GPOPB/
