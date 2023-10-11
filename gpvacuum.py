@@ -9,6 +9,7 @@ gplog.setup_tool_logging("gpopb", '', "gpadmin")
 
 database = 'gpadmin'
 counter = Value('i', 0)
+error_list_file = 'error_list.txt'
 
 # Command line option parser
 parser = optparse.OptionParser()
@@ -42,8 +43,8 @@ def run_vacuum(db_object):
         con.query("vacuum %s" %(db_object))
     except Exception as e:
         logger.error("Vacuum failed on %s" %(db_object))
-        error_list_file.write(db_object + '\n')
-
+        with open(error_list_file, 'a') as f:
+            f.write(db_object + '\n')
     con.close()
     with counter.get_lock():
         counter.value += 1
@@ -56,7 +57,6 @@ def init(args):
     
     
 if __name__ == '__main__':
-    error_list_file = open('error_list.txt','w')
     max_processes = int(options.max_processes)
     db_objects = get_objects()
     pool = Pool(initializer=init, initargs=(counter, ), processes=max_processes)
