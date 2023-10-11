@@ -12,9 +12,9 @@ counter = Value('i', 0)
 
 # Command line option parser
 parser = optparse.OptionParser()
-parser.add_option('--file-list', dest='file_list', action='store', help="Specify filename for list of tables")
-parser.add_option('--max-processes', dest='max_processes', action='store', help="Specify maximum number of processes")
-parser.add_option('--schema', dest='schema', action='store', help="Specify schema name")
+parser.add_option('-f', '--file-list', dest='file_list', action='store', help="Specify filename for list of tables")
+parser.add_option('-p', '--max-processes', dest='max_processes', action='store', help="Specify maximum number of processes")
+parser.add_option('-s', '--schema', dest='schema', action='store', help="Specify schema name")
 options, args = parser.parse_args()
 
 def get_objects():
