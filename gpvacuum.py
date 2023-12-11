@@ -40,7 +40,7 @@ def run_vacuum(db_object):
     ''' Run vacuum on the object '''
     con = DB(dbname = database)
     try:
-        con.query("vacuum %s" %(db_object))
+        con.query("vacuum full analyze %s" %(db_object))
     except Exception as e:
         logger.error("Vacuum failed on %s" %(db_object))
         with open(error_list_file, 'a') as f:
